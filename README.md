@@ -10,8 +10,12 @@ Words Count and Statistic API on Sinatra + MongoDB + Sidekiq
 3) brew services start mongodb              # if you have one, if not please install through brew
 4) brew services start redis                # if you have one, if not please install through brew
 5) /usr/local/bin/sidekiq -r /wc_server.rb  # to start sidekiq run  
-6) rake db:create_indexes
+6) rake db:create_indexes[development]
 7) rackup config.ru                        # start app run 
+
+- To run test
+1) rake db:create_indexes[test]
+2) rake spec
 
 #Endpoints 
 
