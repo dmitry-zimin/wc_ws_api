@@ -29,7 +29,7 @@ Words Count and Statistic API on Sinatra + MongoDB + Sidekiq
     http://localhost:4567/api/v1/word_statistics/who
   
   
-   - My assumptions about current realisation 
+   - My assumptions about current realization 
    
 As we have no detailed specs for API, I've got all the freedom of actions
 So input structure for endpoints I have chosen by my self
