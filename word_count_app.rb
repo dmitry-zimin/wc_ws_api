@@ -5,8 +5,6 @@ require "sinatra/namespace"
 require "mongoid"
 require "sidekiq"
 require "words_counted"
-require "open-uri"
-require "uri"
 
 require_relative "models/word_statistic_model"
 require_relative "lib/input_validator"
