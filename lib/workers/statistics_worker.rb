@@ -1,3 +1,5 @@
+require_relative "../../lib/input_processor"
+
 class StatisticsWorker
   PROCESSOR_CLASS = {
       "text" => InputProcessor::StringStream,
