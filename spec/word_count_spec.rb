@@ -2,7 +2,9 @@ require_relative "spec_helper"
 require_relative "../word_count_app"
 
 RSpec.describe WordCountApp  do
-
+  before(:all) do
+    WordStatisticModel.find_or_create_by(word: "test")
+  end
   it "should respond with welcome msg" do
     get "/"
     expect(last_response).to be_ok
@@ -21,7 +23,6 @@ RSpec.describe WordCountApp  do
   end
 
   it "should return count for predefined word" do
-    WordStatisticModel.find_or_create_by(word: "test")
     get "/api/v1/word_statistics/test"
     expect(last_response).to be_ok
     expect(last_response.body).to eq("0")
