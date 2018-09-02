@@ -18,7 +18,7 @@ describe InputProcessor do
   end
 
   it "should return StrinIO object when I pass url" do
-    url = "https://raw.githubusercontent.com/dmitry-zimin/wc_ws_api/init_phase/files/url_testfile.txt"
+    url = "https://raw.githubusercontent.com/dmitry-zimin/wc_ws_api/master/files/url_testfile.txt"
     stream = InputProcessor::UrlStream.get_stream(url)
     expect(stream).to be_kind_of(StringIO)
   end
