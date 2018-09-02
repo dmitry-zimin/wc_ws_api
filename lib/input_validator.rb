@@ -1,3 +1,5 @@
+require "uri"
+
 class InputValidator
   attr_reader :input_data
   attr_reader :input_source
