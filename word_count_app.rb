@@ -20,7 +20,7 @@ class WordCountApp < Sinatra::Base
   set :root, File.dirname(__FILE__)
 
 # DB Setup
-  Mongoid.load!("mongoid.yml", :development)
+  Mongoid.load!("mongoid.yml", ENV["RACK_ENV"].to_sym)
 
 # Endpoints
   get "/" do
