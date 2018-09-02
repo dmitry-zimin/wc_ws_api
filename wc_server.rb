@@ -4,21 +4,8 @@ require "sinatra"
 require "sinatra/namespace"
 require "mongoid"
 
-# DB Setup
-Mongoid.load! "mongoid.config"
+Dir[File.dirname(__FILE__) + '/models/*.rb'].each {|file| require file }
 
-# Models
-class WordCount
-  include Mongoid::Document
-
-  field :word, type: String
-  field :count, type: Integer, default: 0
-
-  validates :word, presence: true, uniqueness: {message: "Word already exists."}
-  validates :count, presence: true
-
-  index({ word: 1, count: 1 }, { unique: true, background: true })
-end
 
 # Endpoints
 get '/' do
