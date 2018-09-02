@@ -29,7 +29,6 @@ class InputValidator
     when "text" then valid_string?
     when "file_path" then valid_file_path?
     when "url" then valid_url?
-    else return false
     end
   end
 
