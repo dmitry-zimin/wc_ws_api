@@ -1,5 +1,5 @@
 class WordStatisticDispatcher
-  attr_accessor :input
+  attr_reader :input
 
   def initialize(params_json)
     @input = params_json["input_source"]
