@@ -1,10 +1,17 @@
 # wc-server.rb
+
 require "sinatra"
 require "sinatra/namespace"
 require "mongoid"
+require "sidekiq"
+require "words_counted"
+require "open-uri"
+require "uri"
 
 require_relative "models/word_statistic_model"
 require_relative "lib/input_validator"
+require_relative "lib/word_statistic_dispatcher"
+require_relative "lib/workers/statistics_worker"
 
 # Endpoints
 get "/" do
