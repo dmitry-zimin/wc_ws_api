@@ -11,7 +11,7 @@ Words Count and Statistic API on Sinatra + MongoDB + Sidekiq
 4) brew services start redis                # if you have one, if not please install through brew
 5) /usr/local/bin/sidekiq -r /wc_server.rb  # to start sidekiq run  
 6) rake db:create_indexes
-7) ruby wc_server.rb                        # start app run 
+7) rackup config.ru                        # start app run 
 
 #Endpoints 
 
@@ -19,14 +19,14 @@ Words Count and Statistic API on Sinatra + MongoDB + Sidekiq
     
    example, to send data you can use curl:
    
-    curl -i -X POST -H "Content-Type: application/json" -d'{"input_source":{ "url":"https://raw.githubusercontent.com/dmitry-zimin/wc_ws_api/master/files/url_testfile.txt" } }' http://localhost:4567/api/v1/word_counter
+    curl -i -X POST -H "Content-Type: application/json" -d'{"input_source":{ "url":"https://raw.githubusercontent.com/dmitry-zimin/wc_ws_api/master/files/url_testfile.txt" } }' http://localhost:9292/api/v1/word_counter
     
    
    - 'word_statistics' endpoint returns count if word exist and message if not
    
    example:
     
-    http://localhost:4567/api/v1/word_statistics/who
+    http://localhost:9292/api/v1/word_statistics/who
   
   
    - My assumptions about current realization 
