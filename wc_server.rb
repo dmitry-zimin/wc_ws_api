@@ -13,7 +13,9 @@ require_relative "lib/input_validator"
 require_relative "lib/word_statistic_dispatcher"
 require_relative "lib/workers/statistics_worker"
 require_relative "lib/word_statistic_controller"
-require_relative "lib/input_processor"
+
+# DB Setup
+Mongoid.load!("mongoid.yml", :development)
 
 # Endpoints
 get "/" do
