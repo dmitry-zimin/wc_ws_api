@@ -38,4 +38,3 @@ class InputValidator
     "./files/#{input_data}"
   end
 end
-s
