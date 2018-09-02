@@ -1,4 +1,7 @@
-require_relative "../../lib/input_processor"
+require_relative "../input_processors/string_stream"
+require_relative "../input_processors/file_stream"
+require_relative "../input_processors/url_stream"
+
 
 class StatisticsWorker
   PROCESSOR_CLASS = {
