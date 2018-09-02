@@ -1,7 +1,7 @@
 Words Count and Statistic API on Sinatra + MongoDB + Sidekiq
 ===========================================================
 
-  ## Instructions
+## Instructions
 
 - Run the following commands to get started
 
@@ -17,10 +17,10 @@ Words Count and Statistic API on Sinatra + MongoDB + Sidekiq
 1) rake db:create_indexes[test]
 2) rake spec
 
-   ## Requirements
+## Requirements
 It was created and tested on MacOS High Sierra, version 10.13.5, ruby 2.3.3p222
 
-   ## Endpoints 
+## Endpoints 
 
    - 'word_counter' endpoint
     
@@ -36,7 +36,7 @@ It was created and tested on MacOS High Sierra, version 10.13.5, ruby 2.3.3p222
     http://localhost:9292/api/v1/word_statistics/who
   
   
-   ## My assumptions about current realization 
+## My assumptions about current realization 
    
 As we have no detailed specs for API, I've got all the freedom of actions
 So input structure for endpoints I have chosen by my self
