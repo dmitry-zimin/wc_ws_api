@@ -11,6 +11,7 @@ GEM
     backports (3.11.4)
     bson (4.3.0)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
@@ -24,6 +25,11 @@ GEM
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
+    redis (4.0.2)
+    sidekiq (5.2.1)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -41,14 +47,17 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    words_counted (1.0.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   mongoid
+  sidekiq
   sinatra
   sinatra-contrib
+  words_counted
 
 BUNDLED WITH
    1.16.4
