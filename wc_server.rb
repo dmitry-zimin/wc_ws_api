@@ -6,22 +6,39 @@ require "mongoid"
 require_relative "models/word_statistic_model"
 require_relative "lib/input_validator"
 
-
-
 # Endpoints
-get '/' do
-  'Welcome to the Words Statistic!'
+get "/" do
+  "Welcome to the Words Statistic!"
 end
 
-namespace '/api/v1' do
+namespace "/api/v1" do
 
   before do
-    content_type 'application/json'
+    content_type "application/json"
   end
 
-  get '/word_statistic/:word' do
-    word_stat = WordCount.where(word: params[:word]).first
-    halt(404, { message:'Requested word was not appeared so far'}.to_json) unless word_stat
+  helpers do
+    def json_params(request_body)
+      JSON.parse(request_body)
+    rescue
+      halt 400, { message: "Invalid JSON" }.to_json
+    end
+  end
+
+
+  get "/word_statistics/:word" do
+    word_stat = WordStatisticModel.where(word: params[:word].downcase).first
+    halt(404, { message:"Requested word was not appeared so far" }.to_json) if word_stat.nil?
     word_stat[:count].to_json
   end
+
+  post "/word_counter" do
+    req = request
+    # here will be good to save some data from request for backup adn possible use in future,
+    # I will not write logic for it as it not requested
+    word_processor = WordStatisticDispatcher.new(json_params(req.body.read))
+    halt(422, { message: "Input source is not valid", input: word_processor.input }.to_json) unless word_processor.valid?
+    word_processor.start_processing; status 200
+  end
 end
+
