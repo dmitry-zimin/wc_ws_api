@@ -4,3 +4,10 @@ development:
       database: words_statistic
       hosts:
         - localhost:27017
+
+test:
+  clients:
+    default:
+      database: words_statistic_test
+      hosts:
+      - localhost:27017
