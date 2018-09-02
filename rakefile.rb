@@ -3,7 +3,7 @@ require "rspec/core/rake_task"
 require_relative "models/word_statistic_model"
 
 def load_mongoid(env)
-  Mongoid.load!("mongoid.yml", env)
+  Mongoid.load!("config/mongoid.yml", env)
 end
 
 namespace :db do
