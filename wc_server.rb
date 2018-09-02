@@ -36,7 +36,6 @@ namespace "/api/v1" do
     end
   end
 
-
   get "/word_statistics/:word" do
     word_stat = WordStatisticModel.where(word: params[:word].downcase).first
     halt(404, { message:"Requested word was not appeared so far" }.to_json) if word_stat.nil?
@@ -52,4 +51,3 @@ namespace "/api/v1" do
     word_processor.start_processing; status 200
   end
 end
-
