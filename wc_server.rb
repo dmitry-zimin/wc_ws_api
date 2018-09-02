@@ -1,10 +1,11 @@
 # wc-server.rb
-
 require "sinatra"
 require "sinatra/namespace"
 require "mongoid"
 
-Dir[File.dirname(__FILE__) + '/models/*.rb'].each {|file| require file }
+require_relative "models/word_statistic_model"
+require_relative "lib/input_validator"
+
 
 
 # Endpoints
