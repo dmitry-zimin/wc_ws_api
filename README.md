@@ -38,12 +38,8 @@ It was created and tested on MacOS High Sierra, version 10.13.5, ruby 2.3.3p222
   
 ## My assumptions about current realization 
    
-As we have no detailed specs for API, I've got all the freedom of actions
-So input structure for endpoints I have chosen by my self
-   
-   Input for word_counter endpoint should be well organized.
-   For now we will say that we expect only one input source.
-   possible inputs
+   As we have no detailed specs for API, I've got all the freedom of actions.
+   Possible inputs
   
    {
      "text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady",
@@ -55,9 +51,10 @@ So input structure for endpoints I have chosen by my self
   
    { "input_source": { "text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady" } }
   
-   I've decided that endpoint will not wait until the data will be processed,
-   so we will validate input_source and then send a status,
+   Endpoint will not wait until the data will be processed
+   Error statuses:
    400 if json body not valid, 422 if input_source not valid, 200 if yes.
+   
    Text will be processed in worker which is implemented using Sidekiq
    
    The only unclear thing is about file_path, it could be through FormData, 
