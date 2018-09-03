@@ -47,8 +47,7 @@ class WordCountApp < Sinatra::Base
 
     post "/word_counter" do
       req = request
-      # here will be good to save some data from request for backup adn possible use in future,
-      # I will not write logic for it as it not requested
+      # here will be good to implement logic to save input and some data from request for backup and possible use in future
       word_processor = WordStatisticDispatcher.new(json_params(req.body.read))
       halt(422, { message: "Input source is not valid", input: word_processor.input }.to_json) unless word_processor.valid?
       word_processor.start_processing; status 200
