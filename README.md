@@ -49,7 +49,7 @@ It was created and tested on MacOS High Sierra, version 10.13.5, ruby 2.3.3p222
   
    request body example
   
-   { "input_source": { "text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady" } }
+   {"input_source": {"text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady"}}
   
    Endpoint will not wait until the data will be processed
    Error statuses:
