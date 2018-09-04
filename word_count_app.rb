@@ -10,7 +10,7 @@ require_relative "models/word_statistic_model"
 require_relative "lib/input_validator"
 require_relative "lib/word_statistic_dispatcher"
 require_relative "lib/workers/statistics_worker"
-require_relative "lib/word_statistic_controller"
+require_relative "lib/word_statistic_processor"
 
 class WordCountApp < Sinatra::Base
   register Sinatra::Namespace
@@ -22,7 +22,7 @@ class WordCountApp < Sinatra::Base
 
 # Endpoints
   get "/" do
-    "Welcome to the Words Statistic!"
+    "Welcome to the Words Statistic API!"
   end
 
   namespace "/api/v1" do

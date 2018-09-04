@@ -8,7 +8,7 @@ RSpec.describe WordCountApp  do
   it "should respond with welcome msg" do
     get "/"
     expect(last_response).to be_ok
-    expect(last_response.body).to eq("Welcome to the Words Statistic!")
+    expect(last_response.body).to eq("Welcome to the Words Statistic API!")
   end
 
   it "should return error due to wrong word request" do
@@ -18,7 +18,7 @@ RSpec.describe WordCountApp  do
   end
 
   it "should return 200 status when i do POST with text input" do
-    post "/api/v1/word_counter", params = '{ "input_source": { "text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady" } }'
+    post "/api/v1/word_counter", params = '{"input_source": {"text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady"}}'
     expect(last_response.status).to eq(200)
   end
 

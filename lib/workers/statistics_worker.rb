@@ -1,6 +1,7 @@
 require_relative "../input_processors/string_stream"
 require_relative "../input_processors/file_stream"
 require_relative "../input_processors/url_stream"
+require_relative "../word_statistic_processor"
 
 
 class StatisticsWorker
@@ -10,14 +11,16 @@ class StatisticsWorker
       "url" => InputProcessor::UrlStream
   }.freeze
   include Sidekiq::Worker
+  include WordStatisticProcessor
 
-  # here is raw implementation example, we can add some functionality with Sidekiq::Stats
+  # raw implementation example
+  # additional functionality could be added via Sidekiq::Stats
   def perform(input)
     input_data = input.values[0]
     input_source = input.keys[0]
     input_processor = PROCESSOR_KLASS[input_source]
     data_stream = input_processor.get_stream(input_data)
-    WordStatisticController.count_words_occurrence(data_stream)
+    process_stream(data_stream)
     puts "Boom! processing the data"
   end
 end
