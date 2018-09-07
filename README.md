@@ -1,4 +1,4 @@
-Words Count and Statistic API on Sinatra + MongoDB + Sidekiq
+Code Challenge wc_ws API on Sinatra + MongoDB + Sidekiq
 ===========================================================
 
 ## Instructions
