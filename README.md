@@ -34,3 +34,22 @@ It was created and tested on MacOS High Sierra, version 10.13.5, ruby 2.3.3p222
    example:
     
     http://localhost:9292/api/v1/word_statistics/who
+     
+###Possible inputs
+  
+   {
+     "text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady",
+     "file_path": "path",
+     "url": "url_path"
+   }
+  
+   request body example
+  
+   {"input_source": {"text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady"}}
+  
+   Endpoint will not wait until the data will be processed
+   Error statuses:
+   400 if json body not valid, 422 if input_source not valid, 200 if yes.
+   
+   Text will be processed in worker which is implemented using Sidekiq.
+   
