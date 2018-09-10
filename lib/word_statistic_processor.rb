@@ -13,7 +13,7 @@ module WordStatisticProcessor
   ensure
     str_stream.close unless str_stream.closed?
   end
-  
+
   def save_word_occurrence(words_frequency)
     words_frequency.each do |word, count|
       record = WordStatisticModel.find_or_create_by(word: word)
