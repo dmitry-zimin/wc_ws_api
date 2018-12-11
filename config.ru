@@ -1,5 +1,5 @@
-require "./word_count_app"
+require './word_count_app'
 
-ENV["RACK_ENV"] = "development"
+ENV['RACK_ENV'] = 'development'
 
 run WordCountApp

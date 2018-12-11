@@ -1,25 +1,27 @@
-require "words_counted"
-require "mongoid"
-require "sidekiq"
+require 'words_counted'
+require 'mongoid'
+require 'sidekiq'
 
+require_relative '../lib/../lib/workers/statistics_worker'
+require_relative '../models/word_statistic_model'
 
-require_relative "../lib/../lib/workers/statistics_worker"
-require_relative "../models/word_statistic_model"
-
-def execute_rake_tasks
+def prepare_test_db
   `rake db:purge[test]`
   `rake db:create_indexes[test]`
+  Mongoid.load!('config/mongoid.yml', :test)
 end
 
-# this test is works fine but it should be rewritten
 describe StatisticsWorker do
-  it "count word occurrences in stream" do
-    execute_rake_tasks
-    Mongoid.load!("config/mongoid.yml", :test)
-    str = "What what be be/n what"
-    stream = StringIO.new(str)
+  let(:str) { 'What what be be/n what' }
+  let(:stream) { StringIO.new(str) }
+  before { prepare_test_db }
+
+  def process_words
     StatisticsWorker.new.process_stream(stream)
-    record = WordStatisticModel.where(word: "what").first
-    expect(record.count).to eq(3)
+    WordStatisticModel.where(word: 'what').first
+  end
+
+  it 'count word occurrences in stream' do
+    expect(process_words.count).to eq(3)
   end
 end
