@@ -35,7 +35,7 @@ It was created and tested on MacOS High Sierra, version 10.13.5, ruby 2.3.3p222
     
     http://localhost:9292/api/v1/word_statistics/who
      
-###Possible inputs
+### Possible inputs
   
    {
      "text": "Hi! My name is (what?), my name is (who?), my name is Slim Shady",
