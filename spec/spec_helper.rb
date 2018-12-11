@@ -1,7 +1,7 @@
-require "rack/test"
-require "rspec"
+require 'rack/test'
+require 'rspec'
 
-ENV["RACK_ENV"] = "test"
+ENV['RACK_ENV'] = 'test'
 
 module RSpecMixin
   include Rack::Test::Methods

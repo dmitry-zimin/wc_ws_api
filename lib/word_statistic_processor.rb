@@ -2,11 +2,11 @@ module WordStatisticProcessor
   def process_stream(str_stream)
     # to prevent case when stream cuts word in the middle
     # last token in the current stream chunk is saved and then prepended to the next chunk
-    last_token = ""
-    until str_stream.eof? do
+    last_token = ''
+    until str_stream.eof?
       chunk = str_stream.gets
       concatenated_chunk = last_token + chunk
-      last_token = chunk.split(/[\s]+/).last || ""
+      last_token = chunk.split(/[\s]+/).last || ''
       words_frequency = count_words_occurrence(concatenated_chunk)
       save_word_occurrence(words_frequency)
     end
@@ -23,8 +23,8 @@ module WordStatisticProcessor
   end
 
   def count_words_occurrence(words)
-    words_array = words.scan(/[\p{Alpha}\-']+/).map(&:downcase).reject{ |token| blank_or_non_words(token) }
-    words_array.reduce(Hash.new(0)) { |res,w| res[w] += 1; res }
+    words_array = words.scan(/[\p{Alpha}\-']+/).map(&:downcase).reject { |token| blank_or_non_words(token) }
+    words_array.each_with_object(Hash.new(0)) { |w, res| res[w] += 1;  }
   end
 
   def blank_or_non_words(token)

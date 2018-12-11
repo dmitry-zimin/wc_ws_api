@@ -13,8 +13,8 @@ class WordStatisticModel
   field :word
   field :count, type: Integer, default: 0
 
-  validates :word, presence: true, uniqueness: { message: "Record already exists." }
+  validates :word, presence: true, uniqueness: { message: 'Record already exists.' }
   validates :count, presence: true
 
-  index({ word: 1, count: 1 }, { unique: true, background: true })
+  index({ word: 1, count: 1 }, unique: true, background: true)
 end

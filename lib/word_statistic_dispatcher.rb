@@ -2,7 +2,7 @@ class WordStatisticDispatcher
   attr_reader :input
 
   def initialize(params_json)
-    @input = params_json["input_source"]
+    @input = params_json['input_source']
   end
 
   def start_processing

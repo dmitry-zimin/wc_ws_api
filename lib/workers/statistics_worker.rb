@@ -1,14 +1,13 @@
-require_relative "../input_processors/string_stream"
-require_relative "../input_processors/file_stream"
-require_relative "../input_processors/url_stream"
-require_relative "../word_statistic_processor"
-
+require_relative '../input_processors/string_stream'
+require_relative '../input_processors/file_stream'
+require_relative '../input_processors/url_stream'
+require_relative '../word_statistic_processor'
 
 class StatisticsWorker
   PROCESSOR_KLASS = {
-      "text" => InputProcessor::StringStream,
-      "file_path" => InputProcessor::FileStream,
-      "url" => InputProcessor::UrlStream
+    'text' => InputProcessor::StringStream,
+    'file_path' => InputProcessor::FileStream,
+    'url' => InputProcessor::UrlStream
   }.freeze
   include Sidekiq::Worker
   include WordStatisticProcessor
@@ -21,6 +20,6 @@ class StatisticsWorker
     input_processor = PROCESSOR_KLASS[input_source]
     data_stream = input_processor.get_stream(input_data)
     process_stream(data_stream)
-    puts "Boom! processing the data"
+    puts 'Boom! processing the data'
   end
 end
